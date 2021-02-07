@@ -52,6 +52,7 @@ class presetParamsController extends Controller {
         @description  删除一个自定义组
         @author       shuxiaokai
         @create        2020-10-08 22:10
+        @param {String}            projectId 项目id
         @param {Array<String>}            ids 
         @return       null
     */
@@ -60,6 +61,9 @@ class presetParamsController extends Controller {
         try {
             const params = this.ctx.request.body;
             const reqRule = {
+                projectId: {
+                    type: "string",
+                },
                 ids: {
                     type: "array",
                     itemType: "string"

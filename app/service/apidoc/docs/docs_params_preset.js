@@ -64,15 +64,17 @@ class presetParamsService extends Service {
         return;
     }
     /** 
-        @description  删除参数组
+        @description  删除一个自定义组
         @author       shuxiaokai
         @create        2020-10-08 22:10
-        @param {Array<String>}      ids id数组
+        @param {String}            projectId 项目id
+        @param {Array<String>}            ids 
         @return       null
     */
 
     async deletePresetParams(params) {
-        const { ids } = params;
+        const { ids, projectId } = params;
+        await this.ctx.service.apidoc.docs.docs.checkOperationDocPermission(projectId);
         const result = await this.ctx.model.Apidoc.Docs.DocsParamsPreset.deleteMany({ _id: { $in: ids }});
         return result;
     }
