@@ -536,7 +536,22 @@ class userService extends Service {
 
     async getUserInfo() {
         const _id = this.ctx.session.userInfo.id;
-        const result = await this.ctx.model.Security.User.findById({ _id }, { enable: 0, roleIds: 0, roleNames: 0, loginTimes: 0, password: 0, salt: 0, clientRoutes: 0, clinetMenus: 0, serverRoutes: 0, starProjects: 0 });
+        const result = await this.ctx.model.Security.User.findById({ _id },
+            { 
+                enable: 0,
+                roleIds: 0,
+                roleNames: 0,
+                loginTimes: 0,
+                password: 0,
+                salt: 0,
+                clientRoutes: 0,
+                clinetMenus: 0,
+                serverRoutes: 0,
+                starProjects: 0,
+                accessProjects: 0,
+                __v: 0,
+            }
+        );
 
         return result;
     }
