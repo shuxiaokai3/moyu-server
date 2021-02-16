@@ -26,9 +26,9 @@ class clientMenuService extends Service {
         if (type) {
             doc.type = type;
         }
-        const hasClientMenu = await this.ctx.model.Security.ClientMenu.findOne({ name });
+        const hasClientMenu = await this.ctx.model.Security.ClientMenu.findOne({ path });
         if (hasClientMenu) {
-            this.ctx.helper.errorInfo("当前菜单名称已存在", 1003);
+            this.ctx.helper.errorInfo("当前菜单路径已存在", 1003);
         }
         const result = await this.ctx.model.Security.ClientMenu.create(doc);
         return { _id: result._id };
